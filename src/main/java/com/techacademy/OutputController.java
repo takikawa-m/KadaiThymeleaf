@@ -3,6 +3,8 @@ package com.techacademy;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -14,5 +16,13 @@ public class OutputController {
 		public String postOutput(Model model) {
 	        model.addAttribute("previous", "入力画面へ戻る");
 	        return "output.index";
+		}
+
+	    @PostMapping("/output")
+	    public String postOutput(@RequestParam(name = "val", required = false) String val, Model model) {
+	        // フォームから送信されてきた値をModelに登録
+	        model.addAttribute("val", val);
+	        // output.htmlに画面遷移
+	        return "output";
 		}
 }
