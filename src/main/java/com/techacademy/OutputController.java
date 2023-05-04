@@ -12,11 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class OutputController {
 
 
-		@GetMapping("/output")
-		public String postOutput(Model model) {
-	        model.addAttribute("previous", "入力画面へ戻る");
-	        return "output.index";
-		}
+
 
 	    @PostMapping("/output")
 	    public String postOutput(@RequestParam(name = "val", required = false) String val, Model model) {
